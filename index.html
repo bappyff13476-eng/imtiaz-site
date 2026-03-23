@@ -3,125 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber-Imtiaz | Hypergram BD Intelligence</title>
+    <title>Cyber-Imtiaz Secure Portal</title>
     <style>
-        /* CSS 3D & Animations */
-        :root { --neon-green: #00ff00; --gold: #ffd700; --glass: rgba(255, 255, 255, 0.07); }
+        body { margin: 0; background: #050505; color: #00ffcc; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, #111, #000); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+        .login-card { background: rgba(0, 255, 204, 0.05); padding: 40px; border: 1px solid #00ffcc; border-radius: 20px; box-shadow: 0 0 50px rgba(0, 255, 204, 0.2); text-align: center; width: 320px; }
+        .logo-khan { font-size: 35px; font-weight: 900; color: #fff; text-shadow: 0 0 15px #00ffcc; margin-bottom: 25px; text-transform: uppercase; }
+        input { width: 100%; padding: 12px; margin: 10px 0; background: transparent; border: 1px solid #444; color: white; border-radius: 8px; outline: none; box-sizing: border-box; }
+        .btn { width: 100%; padding: 12px; background: #00ffcc; border: none; color: #000; font-weight: bold; border-radius: 8px; cursor: pointer; margin-top: 15px; transition: 0.3s; }
+        .btn:hover { background: #fff; box-shadow: 0 0 20px #fff; }
+        .toggle-text { margin-top: 15px; font-size: 13px; color: #888; cursor: pointer; }
         
-        body { margin: 0; padding: 0; background: #020202; color: #fff; font-family: 'Orbitron', sans-serif; overflow-x: hidden; }
-        
-        /* Background Animated Particles (Simple 3D look) */
-        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; 
-                      background: radial-gradient(circle at center, #111 0%, #000 100%); opacity: 0.8; }
-
-        /* Main Dashboard Container */
-        .dashboard { max-width: 1100px; margin: 40px auto; padding: 20px; }
-
-        /* Glassmorphism Design */
-        .glass-panel { 
-            background: var(--glass); backdrop-filter: blur(20px); 
-            border: 1px solid rgba(0, 255, 0, 0.2); border-radius: 25px; 
-            padding: 40px; text-align: center; box-shadow: 0 0 40px rgba(0, 255, 0, 0.1);
-            margin-bottom: 30px; transition: 0.5s;
-        }
-        .glass-panel:hover { transform: scale(1.02); border-color: var(--gold); }
-
-        h1 { font-size: 3.5rem; color: var(--gold); text-shadow: 0 0 20px var(--neon-green); margin: 0; }
-        .sub-text { color: #888; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; }
-
-        /* AI Assistant Section */
-        .ai-container { display: flex; flex-direction: column; align-items: center; gap: 20px; }
-        .ai-avatar { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--neon-green); 
-                    box-shadow: 0 0 30px var(--neon-green); animation: pulse 2s infinite; }
-        
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-
-        #ai-status { font-size: 1.2rem; color: #ccffcc; height: 60px; transition: 0.3s; }
-
-        .chat-input-box { width: 100%; display: flex; gap: 10px; margin-top: 20px; }
-        input { flex: 1; padding: 15px; border-radius: 10px; border: 1px solid var(--neon-green); background: #000; color: #fff; font-size: 1rem; }
-        button { padding: 15px 30px; border-radius: 10px; background: var(--neon-green); color: #000; font-weight: bold; cursor: pointer; border: none; transition: 0.3s; }
-        button:hover { background: var(--gold); box-shadow: 0 0 20px var(--gold); }
-
-        /* 3D Service Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 50px; }
-        .card { background: rgba(0,0,0,0.5); padding: 30px; border-radius: 20px; border: 1px solid #333; transition: 0.4s; }
-        .card:hover { border-color: var(--neon-green); transform: translateY(-15px) rotateX(10deg); }
-        .card i { font-size: 2.5rem; color: var(--gold); }
-
-        /* Footer */
-        footer { margin-top: 60px; padding: 20px; color: #555; font-size: 0.8rem; }
+        #dashboard { display: none; padding: 50px; text-align: center; }
+        .ai-status { margin-top: 30px; padding: 20px; border: 1px dashed #00ffcc; display: inline-block; background: rgba(0,0,0,0.5); border-radius: 10px; }
     </style>
 </head>
 <body>
 
-    <div style="position: absolute; top: -100px;">
-        <iframe width="0" height="0" src="https://www.youtube.com/embed/আপনার_গানের_লিংক_এখানে?autoplay=1&loop=1" frameborder="0" allow="autoplay"></iframe>
+<div class="overlay" id="authScreen">
+    <div class="login-card">
+        <div class="logo-khan">KHAN PRO</div>
+        <h3 id="authTitle">Login to System</h3>
+        <input type="text" id="user" placeholder="Username">
+        <input type="password" id="pass" placeholder="Password">
+        <button class="btn" onclick="handleAuth()">ENTER SYSTEM</button>
+        <div class="toggle-text" id="toggleLink" onclick="toggleAuth()">Don't have an account? Create one</div>
     </div>
+</div>
 
-    <div class="bg-overlay"></div>
-
-    <div class="dashboard">
-        <div class="glass-panel">
-            <p class="sub-text">Welcome to the Matrix</p>
-            <h1>WELCOME, IMTIAZ</h1>
-            <p style="color: var(--neon-green);">Master Admin | Cyber Intelligence</p>
-        </div>
-
-        <div class="glass-panel">
-            <div class="ai-container">
-                <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" class="ai-avatar" alt="Cyber-Imtiaz">
-                <h2>Cyber-Imtiaz Assistant</h2>
-                <div id="ai-status">System Online... Waiting for command, Boss Imtiaz.</div>
-                
-                <div class="chat-input-box">
-                    <input type="text" id="userInput" placeholder="Ask Cyber-Imtiaz anything...">
-                    <button onclick="askAI()">EXECUTE</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="grid">
-            <div class="card">
-                <h3>🚀 Hypergram BD</h3>
-                <p>This is Bappi Bhai's powerhouse for garments accessories and digital growth.</p>
-            </div>
-            <div class="card">
-                <h3>🛠 Dev Mode</h3>
-                <p>Coded by Imtiaz in Kali Linux. System optimized for maximum performance.</p>
-            </div>
-            <div class="card">
-                <h3>🛡 Secure Link</h3>
-                <p>Your platform is now fully encrypted and live on GitHub Pages.</p>
-            </div>
-        </div>
-
-        <footer align="center">
-            <p>DESIGNED BY IMTIAZ KHAN | © 2026 HYPERGRAM BD SUPPORT</p>
-        </div>
+<div id="dashboard">
+    <div class="logo-khan">WELCOME BOSS</div>
+    <div class="ai-status">
+        <h3>CYBER-IMTIAZ AI ACTIVE</h3>
+        <input type="text" id="aiInput" placeholder="Order me..." style="width: 250px;">
+        <button class="btn" style="width: auto;" onclick="runAI()">EXECUTE</button>
+        <p id="aiOutput" style="color: #fff; font-weight: bold; margin-top: 15px;">System Ready...</p>
     </div>
+</div>
 
-    <script>
-        function askAI() {
-            const val = document.getElementById('userInput').value.toLowerCase();
-            const status = document.getElementById('ai-status');
+<iframe src="https://www.youtube.com/embed/5PSvX_0kMpw?autoplay=1&mute=0" style="display:none"></iframe>
 
-            // Friendly AI Logic
-            if(val.includes("hello") || val.includes("hi")) {
-                status.innerText = "Cyber-Imtiaz: Hello Boss! You look like a pro hacker today. How's Kali Linux?";
-            } else if(val.includes("who is imtiaz")) {
-                status.innerText = "Cyber-Imtiaz: Imtiaz is the CEO of this system and a genius developer!";
-            } else if(val.includes("bappi bhai") || val.includes("hypergram")) {
-                status.innerText = "Cyber-Imtiaz: Bappi Bhai is the owner of Hypergram BD. I am here to help him scale his brand!";
-            } else if(val.includes("business")) {
-                status.innerText = "Cyber-Imtiaz: Garments Accessories is the key. Let's build a strategy for Bappi Bhai.";
-            } else if(val.includes("play ff") || val.includes("free fire")) {
-                status.innerText = "Cyber-Imtiaz: Bappi Bhai is playing Free Fire? Tell him to get a Booyah for me!";
-            } else {
-                status.innerText = "Cyber-Imtiaz: Analyzing data... That's a deep thought, Boss. Let me process it.";
-            }
-            document.getElementById('userInput').value = "";
-        }
-    </script>
+<script>
+    let isLogin = true;
+    function toggleAuth() {
+        isLogin = !isLogin;
+        document.getElementById('authTitle').innerText = isLogin ? "Login to System" : "Create Account";
+        document.getElementById('toggleLink').innerText = isLogin ? "Go back to Login" : "Don't have an account? Create one";
+    }
+    function handleAuth() {
+        const user = document.getElementById('user').value;
+        if(user !== "") {
+            document.getElementById('authScreen').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+        } else { alert("Enter a name first!"); }
+    }
+    function runAI() {
+        const msg = document.getElementById('aiInput').value;
+        const out = document.getElementById('aiOutput');
+        out.innerText = "Cyber-Imtiaz: Analyzing '" + msg + "'... Action Successful!";
+    }
+</script>
+
 </body>
 </html>
