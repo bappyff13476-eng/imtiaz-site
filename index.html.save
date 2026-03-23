@@ -1,0 +1,72 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imtiaz | Pro Hub</title>
+    <style>
+        /* Cool Animated Background 
+        body
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinit
+           color: #00ff00; font-family: 'Segoe UI', sans-serif;
+            text-align: center; margin: 0; min-height: 100vh;
+        }
+        @keyframes gradient { 0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {backound-position: 0% 50%;} }
+        /* Login Section */
+        #login-screen { background: rgba(0,0,0,0.9); height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; position: fixed; width: 100%; z-index: 1000; }
+        .login-box { border: 2px solid #00ff00; padding: 40px; border-radius: 15px; box-shadow: 0 0 20px #00ff00;
+        /* Main Dashboard */
+        .container { padding: 20px; display: none; }
+        .card { background: rgba(0,0,0,0.8); border: 1px solid #00ff00; border-radius: 15px; padding: 20px; margin: 20px auto; max-width: 500px; box-shadow: 0 0 15px rgba(0,255,0,0.2); 
+        /* AI Section *
+        .ai-box { background: #111; padding: 15px; border-radius: 10px; border-left: 5px solid #ffd700; margin-top: 15px; }
+        
+       /* Footer Links */
+        .footer { mn-top: 50px; font-size: 0.8rem; opacity: 0.7; }
+        .footer a { color: #ffd700; text-decoration: none; margin: 0 10px; }
+
+        input { background: #000; border: 1px solid #00ff00; color: #00ff00; padding: 10px; margin: 5px; border-radius: 5px; }
+      ckground: #00ff00; color: #000; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; border-radius: 5px; }
+    </style>
+</head>
+<bo
+    <div id="login-screen">
+        <
+            <h2>SYSTEM ACCESS</         <input type="text" id="username" placeholder="Username (imtiaz)">
+            <input type="password" id="pass" placeholder="Password (1234)">
+            <br><br>
+        <button onclick="login()">LOGIN / SIGN UP</but
+    </div>
+
+    <iframe id="bg-music" width="0" height="0" src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1&loop=1" frameborder="0" allow="auto   <div class="container" id="main-content">   <h1>WELCOME, IMTIAZ</h1>
+        <p>Official Platform of <b>Hypergram BD</b></p>
+
+      <div class="card">
+            <h3>Support AI 
+            <div id="ai-display">"Hello Boss! System is online. How can I help?"</div>
+            <input type="text" id="ai-input" placeholder="Ask me anything...">
+          <button onclick="askAI()">Send</button>
+        </di
+
+        <div class="footer">
+        <a href="#" onclick="alert('Privacy Policy: Your data is safe with Imtiaz.')">Privacy Policy</a> | 
+          <a href="#" onclick="alert('Terms: Use this site for learning only!')">Terms of Service</a> | 
+            <a href="#" onclick="alert('Contact: imtiaz@hypergrambd.com')">Contact</a>
+        </div>
+    </
+    <script>
+        function login() {
+            let user = document.getElementById("username").vale;
+          let pass = document.getElementById("pass").value;
+            if(user == "imtiaz" && pass == "1234") {
+                document.getElementById("login-screen").style.display = "none";
+                document.getElementById("main-content").style.dspl        } else {
+                alert("Access Denied! Use imtiaz / 1234");
+            }
+        }
+        function askAI() {
+            let input = document.getElementById("ai-input").value.toLowerCase();
+            let display = document.getElementById("ai-display");            if(input.includes("hi")) display.innerHTML = "AI: Hello Imtiaz! Ready to code?";
+          else if(input.includes("policy")) display.innerHTML = "AI: Check the footer links below!";
+            else display.innerHTML = "AI: Processing for Hypergram BD..kkkkk

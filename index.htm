@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imtiaz | Hypergram BD Official</title>
+    <style>
+        /* কালারফুল এনিমেটেড ব্যাকগ্রাউন্ড */
+        body {
+            margin: 0; padding: 0;
+            background: linear-gradient(-45deg, #000000, #0a1f12, #001a1a, #0d0d0d);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            color: #00ff00; font-family: 'Segoe UI', Tahoma, sans-serif;
+            display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden;
+        }
+        @keyframes gradientBG { 0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;} }
+
+        /* লগইন বক্স */
+        #login-box {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 40px; border-radius: 20px;
+            border: 2px solid #00ff00; text-align: center;
+            box-shadow: 0 0 30px #00ff00;
+        }
+
+        /* ড্যাশবোর্ড (লগইন করার পর দেখাবে) */
+        #dashboard { display: none; text-align: center; width: 90%; max-width: 600px; }
+        .card { background: rgba(0,255,0,0.05); border: 1px solid #00ff00; padding: 25px; border-radius: 15px; margin-top: 20px; box-shadow: 0 0 15px rgba(0,255,0,0.2); }
+
+        /* ইনপুট ও বাটন স্টাইল */
+        input { background: #111; border: 1px solid #00ff00; color: #00ff00; padding: 12px; margin: 10px; border-radius: 8px; width: 80%; outline: none; }
+        button { background: #00ff00; color: #000; border: none; padding: 12px 25px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.4s; }
+        button:hover { background: #fff; box-shadow: 0 0 20px #00ff00; transform: scale(1.05); }
+
+        /* ফুটার লিঙ্কস */
+        .footer { margin-top: 30px; font-size: 0.9rem; }
+        .footer a { color: #ffd700; text-decoration: none; margin: 0 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div id="login-box">
+        <h2 style="letter-spacing: 2px;">IMTIAZ SYSTEM LOGIN</h2>
+        <input type="text" id="user" placeholder="Username (imtiaz)">
+        <input type="password" id="pass" placeholder="Password (1234)">
+        <br>
+        <button onclick="login()">ENTER SYSTEM</button>
+    </div>
+
+    <div id="dashboard">
+        <h1 style="font-size: 3rem; color: #ffd700; text-shadow: 0 0 10px #ffd700;">WELCOME BOSS</h1>
+        <p>You are now inside <b>Hypergram BD</b> Command Center</p>
+
+        <div class="card">
+            <h3>Friendly AI Supporter</h3>
+            <div id="ai-msg">"Hello Imtiaz! Everything is ready for you."</div>
+            <input type="text" id="ai-input" placeholder="Type something friendly..." style="width: 70%;">
+            <button onclick="talkAI()">Execute</button>
+        </div>
+
+        <div class="footer">
+            <a onclick="alert('Privacy: Your site is 100% secure.')">Privacy Policy</a> | 
+            <a onclick="alert('Terms: Powered by Hypergram BD Engineering.')">Terms of Use</a> | 
+            <a onclick="alert('Contact: Support@hypergrambd.com')">Contact</a>
+        </div>
+    </div>
+
+    <iframe id="music" width="0" height="0" src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1" frameborder="0" allow="autoplay"></iframe>
+
+    <script>
+        function login() {
+            let u = document.getElementById("user").value;
+            let p = document.getElementById("pass").value;
+            if(u === "imtiaz" && p === "1234") {
+                document.getElementById("login-box").style.display = "none";
+                document.getElementById("dashboard").style.display = "block";
+            } else {
+                alert("Security Alert! Wrong Credentials.");
+            }
+        }
+
+        function talkAI() {
+            let val = document.getElementById("ai-input").value.toLowerCase();
+            let out = document.getElementById("ai-msg");
+            if(val.includes("hi") || val.includes("hello")) {
+                out.innerHTML = "AI: Hello Master! How is your day going? 😊";
+            } else if(val.includes("hypergram")) {
+                out.innerHTML = "AI: Hypergram BD is going to be the biggest brand! 🚀";
+            } else {
+                out.innerHTML = "AI: System processing... Imtiaz is the best!";
+            }
+            document.getElementById("ai-input").value = "";
+        }
+    </script>
+</body>
+</html>
